@@ -1,10 +1,10 @@
 import Foundation
 
-struct OpenAIAPIError: Decodable, Error {
-    let code: String?
-    let message: String
-    let param: String?
-    let type: String
+public struct OpenAIAPIError: Decodable, Error {
+    public let code: String?
+    public let message: String
+    public let param: String?
+    public let type: String
 
     private enum CodingKeys: String, CodingKey {
         case error
@@ -14,7 +14,7 @@ struct OpenAIAPIError: Decodable, Error {
         case code, message, param, type
     }
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let errorContainer = try container.nestedContainer(keyedBy: ErrorKeys.self, forKey: .error)
 
